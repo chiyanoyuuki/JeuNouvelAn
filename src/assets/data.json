@@ -1,0 +1,30 @@
+{
+	"joueurs": [
+	  {"nom":"Aohane","boire":"1","sex":true,"physique":false,"femme":false},
+	  {"nom":"Cass","boire":"1","sex":true,"physique":false,"femme":true},
+	  {"nom":"Chiya","boire":"3","sex":true,"physique":true,"femme":false},
+	  {"nom":"Chiyapi","boire":"0","sex":false,"physique":false,"femme":true},
+	  {"nom":"Jonah","boire":"1","sex":true,"physique":false,"femme":false},
+	  {"nom":"LM","boire":"2","sex":true,"physique":false,"femme":false},
+	  {"nom":"Merry","boire":"4","sex":true,"physique":true,"femme":false},
+	  {"nom":"Micka","boire":"3","sex":true,"physique":true,"femme":false},
+	  {"nom":"Rem","boire":"3","sex":true,"physique":true,"femme":false},
+	  {"nom":"Shiro","boire":"3","sex":true,"physique":true,"femme":false},
+	  {"nom":"Slipstream","boire":"4","sex":true,"physique":true,"femme":false},
+	  {"nom":"Takt","boire":"2","sex":true,"physique":true,"femme":false},
+	  {"nom":"Throw","boire":"3","sex":true,"physique":true,"femme":false}
+	],
+	"actions": [
+	  {"nom":"Quizz","global":"doit répondre à une question de","choix":"quelqu'un de son choix"},
+	  {"nom":"Action","global":"doit faire une action de","choix":"quelqu'un de son choix"},
+	  {"nom":"Vérité","global":"doit répondre à une vérité de","choix":"quelqu'un de son choix"},
+	  {"nom":"Duel","global":"doit affronter en duel","choix":"quelqu'un de son choix"},
+	  {"nom":"Don d'action","global":"doit donner une action à","choix":"quelqu'un de son choix"},
+	  {"nom":"Malus","global":"reçoit le malus","solo":true},
+	  {"nom":"Bonus","global":"reçoit le bonus","solo":true},
+	  {"nom":"Tire une carte"},
+	  {"nom":"Guess","global":"doit deviner un guess de","choix":"quelqu'un de son choix"},
+	  {"nom":"J'ai déjà, je n'ai jamais","global":"propose un j'ai déjà, je n'ai jamais","solo":"true"},
+	  {"nom":"Fais deviner","global":"doit faire deviner à","choix":"quelqu'un de son choix"}
+	]
+}

@@ -1,30 +1,65 @@
 {
-	"joueurs": [
-	  {"nom":"Aohane","boire":"1","sex":true,"physique":false,"femme":false},
-	  {"nom":"Cass","boire":"1","sex":true,"physique":false,"femme":true},
-	  {"nom":"Chiya","boire":"3","sex":true,"physique":true,"femme":false},
-	  {"nom":"Chiyapi","boire":"0","sex":false,"physique":false,"femme":true},
-	  {"nom":"Jonah","boire":"1","sex":true,"physique":false,"femme":false},
-	  {"nom":"LM","boire":"2","sex":true,"physique":false,"femme":false},
-	  {"nom":"Merry","boire":"4","sex":true,"physique":true,"femme":false},
-	  {"nom":"Micka","boire":"3","sex":true,"physique":true,"femme":false},
-	  {"nom":"Rem","boire":"3","sex":true,"physique":true,"femme":false},
-	  {"nom":"Shiro","boire":"3","sex":true,"physique":true,"femme":false},
-	  {"nom":"Slipstream","boire":"4","sex":true,"physique":true,"femme":false},
-	  {"nom":"Takt","boire":"2","sex":true,"physique":true,"femme":false},
-	  {"nom":"Throw","boire":"3","sex":true,"physique":true,"femme":false}
+	"joueurs": 
+	[
+		{"nom":"Aohane","boire":"1","sex":true,"physique":false,"femme":false,"lol":false},
+		{"nom":"Cass","boire":"1","sex":true,"physique":false,"femme":true,"lol":false},
+		{"nom":"Chiya","boire":"3","sex":true,"physique":true,"femme":false,"lol":true},
+		{"nom":"Chiyapi","boire":"0","sex":false,"physique":false,"femme":true,"lol":true},
+		{"nom":"Jonah","boire":"1","sex":true,"physique":false,"femme":false,"lol":false},
+		{"nom":"LM","boire":"2","sex":true,"physique":false,"femme":false,"lol":false},
+		{"nom":"Merry","boire":"4","sex":true,"physique":true,"femme":false,"lol":true},
+		{"nom":"Micka","boire":"3","sex":true,"physique":true,"femme":false,"lol":true},
+		{"nom":"Rem","boire":"3","sex":true,"physique":true,"femme":false,"lol":false},
+		{"nom":"Shiro","boire":"3","sex":true,"physique":true,"femme":false,"lol":true},
+		{"nom":"Slipstream","boire":"4","sex":true,"physique":true,"femme":false,"lol":false},
+		{"nom":"Takt","boire":"2","sex":true,"physique":true,"femme":false,"lol":true},
+		{"nom":"Throw","boire":"3","sex":true,"physique":true,"femme":false,"lol":true}
 	],
-	"actions": [
-	  {"nom":"Quizz","global":"doit répondre à une question de","choix":"quelqu'un de son choix"},
-	  {"nom":"Action","global":"doit faire une action de","choix":"quelqu'un de son choix"},
-	  {"nom":"Vérité","global":"doit répondre à une vérité de","choix":"quelqu'un de son choix"},
-	  {"nom":"Duel","global":"doit affronter en duel","choix":"quelqu'un de son choix"},
-	  {"nom":"Don d'action","global":"doit donner une action à","choix":"quelqu'un de son choix"},
-	  {"nom":"Malus","global":"reçoit le malus","solo":true},
-	  {"nom":"Bonus","global":"reçoit le bonus","solo":true},
-	  {"nom":"Tire une carte"},
-	  {"nom":"Guess","global":"doit deviner un guess de","choix":"quelqu'un de son choix"},
-	  {"nom":"J'ai déjà, je n'ai jamais","global":"propose un j'ai déjà, je n'ai jamais","solo":"true"},
-	  {"nom":"Fais deviner","global":"doit faire deviner à","choix":"quelqu'un de son choix"}
+	"actions": 
+	[
+		{
+			"nom":"Quizz",
+			"global":"doit répondre à une question de",
+			"choix":"quelqu'un de son choix",
+			"values":[
+				{"desc":"sur lol","chance":10, "cond":"lol"},
+				{"desc":"sur fate","chance":30},
+				{"desc":"sur un jeu vidéo","chance":40},
+				{"desc":"sur un manga","chance":60},
+				{"desc":"en culture générale","chance":70},
+				{"desc":"sur un opening d'anime","chance":90},
+				{"desc":"sur un ending d'anime","chance":100}
+			]
+		},
+		{"nom":"Action","global":"doit faire une action de","choix":"quelqu'un de son choix"},
+		{"nom":"Vérité","global":"doit répondre à une vérité de","choix":"quelqu'un de son choix"},
+		{
+			"nom":"Duel",
+			"global":"doit affronter en duel",
+			"choix":"quelqu'un de son choix",
+			"values":[
+				{"desc":"au bras de fer","chance":10, "cond":"physique"},
+				{"desc":"en pour combien","chance":30},
+				{"desc":"sur une question","chance":40},
+				{"desc":"en blind test","chance":60}
+			]
+		},
+		{"nom":"Don d'action","global":"doit donner une action à","choix":"quelqu'un de son choix"},
+		{
+			"nom":"Tire une carte",
+			"solo":true
+		},
+		{
+			"nom":"Guess",
+			"validate":true,
+			"values":[
+				{"desc":"devine le résultat d'un pile ou face","chance":40},
+				{"desc":"devine de quelle couleur est la première carte du paquet","chance":65},
+				{"desc":"devine quel est le numéro de la première carte du paquet","chance":90},
+				{"desc":"devine quelle carte est sur le dessus du paquet","chance":100}
+			]
+		},
+		{"nom":"J'ai déjà, je n'ai jamais","global":"propose un j'ai déjà, je n'ai jamais","solo":"true"},
+		{"nom":"Fais deviner","global":"doit faire deviner à","choix":"quelqu'un de son choix"}
 	]
 }

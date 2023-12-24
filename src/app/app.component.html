@@ -18,6 +18,7 @@
         <p class="clickable" (click)="joueur.femme=!joueur.femme">{{joueur.femme?'She':'He'}}</p>
         <p class="clickable" [class.notok]="!joueur.sex" (click)="joueur.sex=!joueur.sex">Contenu -18</p>
         <p class="clickable" [class.notok]="!joueur.physique" (click)="joueur.physique=!joueur.physique">Contenu Physique</p>
+        <p class="clickable" [class.notok]="!joueur.lol" (click)="joueur.lol=!joueur.lol">Questions Lol</p>
       </div>
     </div>
     <div>
@@ -27,13 +28,20 @@
   </div>
   <div *ngIf="joueur" class="noflex">
     
-    <div>
-      <div *ngFor="let action of tour.actions" class="clickable joueur noflex">
-        <p>{{action.nom}}</p>
-        <p>{{joueur.nom}} {{action.description?action.description:''}}</p>
+    <div class="noflex">
+      <p>{{joueur.nom}}</p>
+      <div>
+        <div *ngIf="!clickedAction">
+          <div *ngFor="let action of tour.actions" (click)="clickedAction=action" class="clickable joueur noflex">
+            <p>{{action.nom}}</p>
+          </div>
+        </div>
+        <div *ngIf="clickedAction" class="clickable joueur noflex">
+          <p>{{joueur.nom}} {{clickedAction.description?clickedAction.description:''}}</p>
+        </div>
       </div>
     </div>
-    <div>
+    <div *ngIf="clickedAction">
       <button (click)="newTour()">Nouveau tour</button>
     </div>
   </div>

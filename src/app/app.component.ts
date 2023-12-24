@@ -19,6 +19,7 @@ export class AppComponent implements OnInit
   lancer=true;
   joueur:any;
   tour:any={};
+  clickedAction:any;
 
   ngOnInit()
   {
@@ -32,13 +33,16 @@ export class AppComponent implements OnInit
 
   newTour()
   {
+    this.clickedAction = undefined;
     this.tour={actions:[]};
     if(!this.lancer)this.lancer=true;
     let nb = Math.floor(Math.random()*this.joueurs.length);
     this.joueur = this.joueurs[nb];
     
     let boire = {nom:'Boire',solo:true,global:"doit boire " + (this.joueur.boire>2?"deux":"une") + " gorgée" + (this.joueur.boire>2?"s":"")};
-    let malus = this.actions.find((a:any)=>a.nom=="Malus");
+    let malus = {"nom":"Malus","global":"reçoit le malus","solo":true};
+    let bonus = {"nom":"Bonue","global":"reçoit le bonus","solo":true};
+
     let chance = 2;
     let rdm = 0;
     while(rdm==0||this.tour.actions.length==this.actions.length)
@@ -63,8 +67,9 @@ export class AppComponent implements OnInit
       this.tour.actions.push(action);
       rdm = Math.floor(Math.random()*chance);
       chance = chance + 1;
-      if(action.nom==boire.nom){this.tour.actions=[boire];rdm=1;}
-      if(action.nom=="Malus"){this.tour.actions=[malus];rdm=1;}
+      if(action.nom==boire.nom){this.tour.actions=[boire];rdm=100;}
+      if(action.nom=="Malus"){this.tour.actions=[malus];rdm=100;}
+      if(rdm>0&&this.tour.actions.length==1)this.clickedAction=action;
     }
   }
 
@@ -72,12 +77,33 @@ export class AppComponent implements OnInit
   {
     let description = '';
 
-    let tmp = Math.floor(Math.random()*this.joueurs.length);
+    let tmp = Math.floor(Math.random()*4);
+    let rdm = Math.floor(Math.random()*this.joueurs.length);
 
-    for(let i=0;i<this.actions.length;i++)
+    if(action.global)
     {
       description = action.global + " ";
-      if(!action.solo) description = description + (this.joueurs[tmp]==this.joueur?action.global:this.joueurs[tmp].nom);
+      if(!action.solo) 
+      {
+        description = description + (this.joueurs[rdm]==this.joueur||tmp==0?action.choix:this.joueurs[rdm].nom);
+      }
+    }
+    if(action.values)
+    {
+      let val = Math.floor(Math.random()*100);
+      let found = false;
+      for(let i=0;i<action.values.length&&!found;i++)
+      {
+        let value = action.values[i];
+        if(this.joueur.sex&&value.cond=="sex"){}
+        else if(this.joueur.physique&&value.cond=="physique"){}
+        else if(this.joueur.lol&&value.cond=="lol"){}
+        else if(value.chance>=val) 
+        {
+          description = description + " " + value.desc;
+          found = true;
+        }
+      }
     }
 
     return description;
